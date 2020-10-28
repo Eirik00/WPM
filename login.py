@@ -53,11 +53,15 @@ class NewprojectApp:
 
     def pinCodeEntered(self):
         f = open("pincode.txt", "r")
-        print(f.read())
+        print(f.read()) #uuuh, why does this has to be here for it to work!?
         if pinCode == f.read():
-            print("cool")
+            print("correct")
+            root.destroy()
+            stream = open("mainapp.py")
+            read_file = stream.read()
+            exec(read_file)
         else:
-            print("not cool")
+            print("failed")
 
 if __name__ == '__main__':
     import tkinter as tk
