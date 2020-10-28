@@ -23,7 +23,6 @@ class NewprojectApp:
         self.entry_pincode.config(background='#ffffff', borderwidth='2', font='{Times New Roman Baltic} 11 {}', foreground='#000000')
         self.entry_pincode.config(relief='raised', show='•', validate='none', width='8')
         self.entry_pincode.grid(column='0', row='3', sticky='s')
-        pinCode = self.entry_pincode.get()
         self.pincode_button.configure(command=self.pinCodeEntered)
         
         self.pincode = tk.Label(self.main_frame)
@@ -41,6 +40,8 @@ class NewprojectApp:
         self.frame_6 = tk.Frame(self.main_frame)
         self.frame_6.config(background='#beeffa', height='20', width='200')
         self.frame_6.grid(column='0', row='4')
+        self.label_warning = tk.Label(self.main_frame)
+        self.label_warning.destroy()
         
         self.main_frame.config(background='#beeffa', cursor='arrow', height='200', width='200')
         self.main_frame.grid()
@@ -53,9 +54,10 @@ class NewprojectApp:
         self.mainwindow.mainloop()
 
     def pinCodeEntered(self):
+        pinCode = self.entry_pincode.get()
         f = open("pincode.txt", "r")
-        print(f.read()) #uuuh, why does this has to be here for it to work!?
-        if pinCode == f.read():
+        testcode = f.read()
+        if pinCode == testcode:
             print("correct")
             root.destroy()
             sys.path.append("data/")
@@ -67,6 +69,16 @@ class NewprojectApp:
             exec(read_file)
         else:
             print("failed")
+            if self.label_warning.winfo_exists():
+                self.label_warning.destroy()
+                
+                self.label_warning = tk.Label(self.main_frame)
+                self.label_warning.config(background='#beeffa', font='{Courier} 10 {}', foreground='#ff0000', text='Wrong PIN')
+                self.label_warning.grid(column='0', row='4', sticky='w')
+            else:
+                self.label_warning = tk.Label(self.main_frame)
+                self.label_warning.config(background='#beeffa', font='{Courier} 10 {}', foreground='#ff0000', text='Wrong PIN')
+                self.label_warning.grid(column='0', row='4', sticky='w')
 
 if __name__ == '__main__':
     import tkinter as tk
