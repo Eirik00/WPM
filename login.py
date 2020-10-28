@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+import sys
 
 
 pinCode = ""
@@ -57,9 +58,13 @@ class NewprojectApp:
         if pinCode == f.read():
             print("correct")
             root.destroy()
-            stream = open("mainapp.py")
+            sys.path.append("data/")
+            #setting new path
+            import defea as en
+            
+            stream = open("data/mainapp.py")
             read_file = stream.read()
-            exec(read_file)
+            exec(read_file, globals())
         else:
             print("failed")
 

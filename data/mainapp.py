@@ -1,9 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-import sys
-
-sys.path.append("/data/")
-import defea.py as encrypt
+import defea as en
 
 class NewprojectApp:
     def __init__(self, master=None):
@@ -40,7 +37,7 @@ class NewprojectApp:
         self.mainwindow = self.mainframe
 
     def createPass(self):
-        print(encrypt.encryptMsg("cool"))
+        print(en.encryptMsg("cool"))
         pass
 
     def showPass(self):
