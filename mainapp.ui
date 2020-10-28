@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.0">
+  <object class="tk.Frame" id="mainframe">
+    <property name="background">#c2fcfc</property>
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="propagate">True</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="tk.Label" id="label_title">
+        <property name="background">#c2fcfc</property>
+        <property name="font">{Calibri} 20 {}</property>
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Wind's Password Manager</property>
+        <property name="width">30</property>
+        <layout manager="grid">
+          <property name="columnspan">3</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="sticky">n</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_13">
+        <property name="background">#c2fcfc</property>
+        <property name="height">40</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Button" id="button_createPassword">
+        <property name="command">createPass</property>
+        <property name="font">{Calibri} 11 {}</property>
+        <property name="text" translatable="yes">Create New</property>
+        <property name="width">20</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Button" id="button_8">
+        <property name="command">showPass</property>
+        <property name="font">{Calibri} 11 {}</property>
+        <property name="text" translatable="yes">Show Selected</property>
+        <property name="width">20</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <property name="sticky">nw</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Listbox" id="listbox_4">
+        <layout manager="grid">
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Button" id="button_deletePassword">
+        <property name="command">deletePass</property>
+        <property name="font">{Calibri} 11 {}</property>
+        <property name="foreground">#f5010a</property>
+        <property name="text" translatable="yes">Delete</property>
+        <property name="width">20</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <property name="sticky">sw</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_15">
+        <property name="background">#c2fcfc</property>
+        <property name="height">40</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
