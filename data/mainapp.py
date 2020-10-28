@@ -15,11 +15,11 @@ class NewprojectApp:
         self.frame_13.grid(column='0', row='1')
         self.button_createPassword = tk.Button(self.mainframe)
         self.button_createPassword.config(font='{Calibri} 11 {}', text='Create New', width='20')
-        self.button_createPassword.grid(column='0', padx='20', row='2', sticky='w')
+        self.button_createPassword.grid(column='0', padx='20', row='2', sticky='nw')
         self.button_createPassword.configure(command=self.createPass)
         self.button_8 = tk.Button(self.mainframe)
         self.button_8.config(font='{Calibri} 11 {}', text='Show Selected', width='20')
-        self.button_8.grid(column='0', padx='20', row='2', sticky='nw')
+        self.button_8.grid(column='0', padx='20', row='2', sticky='w')
         self.button_8.configure(command=self.showPass)
         self.listbox_4 = tk.Listbox(self.mainframe)
         self.listbox_4.grid(column='2', row='2')
@@ -38,6 +38,8 @@ class NewprojectApp:
 
     def createPass(self):
         print(en.encryptMsg("cool"))
+        stream = open("createpass.py")
+        exec(stream.read())
         pass
 
     def showPass(self):

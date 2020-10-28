@@ -64,7 +64,7 @@ class NewprojectApp:
             
             stream = open("data/mainapp.py")
             read_file = stream.read()
-            exec(read_file, globals())
+            exec(read_file)
         else:
             print("failed")
 
