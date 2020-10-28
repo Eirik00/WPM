@@ -1,6 +1,9 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+import sys
 
+sys.path.append("/data/")
+import defea.py as encrypt
 
 class NewprojectApp:
     def __init__(self, master=None):
@@ -37,6 +40,7 @@ class NewprojectApp:
         self.mainwindow = self.mainframe
 
     def createPass(self):
+        print(encrypt.encryptMsg("cool"))
         pass
 
     def showPass(self):
@@ -47,10 +51,12 @@ class NewprojectApp:
 
     def run(self):
         self.mainwindow.mainloop()
+        
 
 if __name__ == '__main__':
     import tkinter as tk
     root = tk.Tk()
+    root.resizable(False,False)
     app = NewprojectApp(root)
     app.run()
 

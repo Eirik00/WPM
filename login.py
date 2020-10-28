@@ -66,5 +66,6 @@ class NewprojectApp:
 if __name__ == '__main__':
     import tkinter as tk
     root = tk.Tk()
+    root.resizable(False,False)
     app = NewprojectApp(root)
     app.run()
