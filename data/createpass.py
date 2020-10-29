@@ -1,3 +1,5 @@
+import tkinter as tk
+import tkinter.ttk as ttk
 import defea as en
 
 warned = False
@@ -67,7 +69,7 @@ class NewprojectApp:
             username = self.entry_2.get()
             password = self.entry_3.get()
             f = open("LOCALSAVED/" + name + ".dll", "w")
-            f.write(en.encryptMsg(username + ":" + password)
+            f.write(encryptMsg(username + ":" + password))
             f.close()
             root.destroy()
 
