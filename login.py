@@ -1,9 +1,27 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-import sys
 
+#################This is the encryption tab#####################
+alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," ",".",",",":",";","1","2","3","4","5","6","7","8","9","0"]
+encrypte = ["3","O","¤","k","£","n","Y","€","j","h","#","M","v","å","2","g","*","c","?","r","e","'","s","z","a","q",">","~","´","Å","ø","N","Ä","ñ","ô","|","@","$","{",")","L","?","6","P","<",'"',"ɇ","ƒ","Œ","¥","¦","ª",";","1","(","Æ","$","¼","§",".","¿","À","ē","Ŧ","ƨ","ǟ","ȼ"]
+
+def encryptMsg(msg):
+    nwMsg = ""
+    for x in msg:
+        letter = alphabet.index(x)
+        nwMsg = nwMsg + encrypte[letter]
+    return nwMsg
+
+def decryptMsg(msg):
+    nwMsg = ""
+    for x in f:
+        i = encrypte.index(x)
+        msg = msg + alphabet[i]
+    return nwMsg
+#################################################################
 
 pinCode = ""
+passwarned = False
 class NewprojectApp:
     def __init__(self, master=None):
         # build ui
@@ -54,19 +72,148 @@ class NewprojectApp:
         self.mainwindow.mainloop()
 
     def pinCodeEntered(self):
+        global tk
         pinCode = self.entry_pincode.get()
         f = open("pincode.txt", "r")
         testcode = f.read()
         if pinCode == testcode:
             print("correct")
-            root.destroy()
-            sys.path.append("data/")
-            #setting new path
-            import defea as en
+            qutiMainWindow()
             
-            stream = open("data/mainapp.py")
-            read_file = stream.read()
-            exec(read_file)
+            class NewprojectApp:
+                def __init__(self, master=None):
+                    # build ui
+                    self.mainframe = tk.Frame(master)
+                    self.label_title = tk.Label(self.mainframe)
+                    self.label_title.config(background='#c2fcfc', font='{Calibri} 20 {}', justify='left', text="Wind's Password Manager")
+                    self.label_title.config(width='30')
+                    self.label_title.grid(columnspan='3', padx='20', sticky='n')
+                    self.frame_13 = tk.Frame(self.mainframe)
+                    self.frame_13.config(background='#c2fcfc', height='40', width='200')
+                    self.frame_13.grid(column='0', row='1')
+                    self.button_createPassword = tk.Button(self.mainframe)
+                    self.button_createPassword.config(font='{Calibri} 11 {}', text='Create New', width='20')
+                    self.button_createPassword.grid(column='0', padx='20', row='2', sticky='nw')
+                    self.button_createPassword.configure(command=self.createsPass)
+                    self.button_8 = tk.Button(self.mainframe)
+                    self.button_8.config(font='{Calibri} 11 {}', text='Show Selected', width='20')
+                    self.button_8.grid(column='0', padx='20', row='2', sticky='w')
+                    self.button_8.configure(command=self.showPass)
+                    self.listbox_4 = tk.Listbox(self.mainframe)
+                    self.listbox_4.grid(column='2', row='2')
+                    self.button_deletePassword = tk.Button(self.mainframe)
+                    self.button_deletePassword.config(font='{Calibri} 11 {}', foreground='#f5010a', text='Delete', width='20')
+                    self.button_deletePassword.grid(column='0', padx='20', row='2', sticky='sw')
+                    self.button_deletePassword.configure(command=self.deletePass)
+                    self.frame_15 = tk.Frame(self.mainframe)
+                    self.frame_15.config(background='#c2fcfc', height='40', width='200')
+                    self.frame_15.grid(column='0', row='3')
+                    self.mainframe.config(background='#c2fcfc', height='200', width='200')
+                    self.mainframe.pack(side='top')
+
+                    # Main widget
+                    self.mainwindow = self.mainframe
+
+                def createsPass(self):
+                    class NewprojectApp:
+                        def __init__(self, master=None):
+                            # build ui
+                            self.create_password_window = ttk.Frame(master)
+                            self.label_1 = ttk.Label(self.create_password_window)
+                            self.label_1.config(font='{Calibri} 20 {}', text='Create Password')
+                            self.label_1.grid(columnspan='2', sticky='nw')
+                            self.label_1.columnconfigure('0', weight='0')
+                            self.label_2 = ttk.Label(self.create_password_window)
+                            self.label_2.config(font='{Courier} 9 {}', text='Creating a new password is really simple!\nJust write inn the name of the password,\nusername and the password!')
+                            self.label_2.grid(column='0', columnspan='2', row='1')
+                            self.label_2.columnconfigure('0', weight='0')
+                            self.entry_1 = ttk.Entry(self.create_password_window)
+                            self.entry_1.config(width='30')
+                            self.entry_1.grid(column='0', row='2', sticky='w')
+                            self.entry_1.columnconfigure('0', weight='0')
+                            self.label_name = ttk.Label(self.create_password_window)
+                            self.label_name.config(font='{Calibri} 11 {}', padding='0', relief='flat', text='Name')
+                            self.label_name.grid(column='1', padx='0', row='2', sticky='w')
+                            self.label_name.columnconfigure('0', weight='0')
+                            self.entry_2 = ttk.Entry(self.create_password_window)
+                            self.entry_2.config(width='30')
+                            self.entry_2.grid(column='0', row='3', sticky='w')
+                            self.label_username = ttk.Label(self.create_password_window)
+                            self.label_username.config(font='{Calibri} 11 {}', text='Username')
+                            self.label_username.grid(column='1', row='3', sticky='w')
+                            self.entry_3 = ttk.Entry(self.create_password_window)
+                            self.entry_3.config(show='•', width='30')
+                            self.entry_3.grid(column='0', row='4', sticky='w')
+                            self.label_password = ttk.Label(self.create_password_window)
+                            self.label_password.config(font='{Calibri} 11 {}', text='Password')
+                            self.label_password.grid(column='1', row='4', sticky='w')
+                            self.frame_2 = ttk.Frame(self.create_password_window)
+                            self.frame_2.config(height='20', width='200')
+                            self.frame_2.grid(column='0', row='5')
+                            self.button_cancel = ttk.Button(self.create_password_window)
+                            self.button_cancel.config(text='Cancel')
+                            self.button_cancel.grid(column='0', row='6', sticky='w')
+                            self.button_cancel.configure(command=self.cancel)
+                            self.button_create = ttk.Button(self.create_password_window)
+                            self.button_create.config(text='Create')
+                            self.button_create.grid(column='1', row='6', sticky='e')
+                            self.button_create.configure(command=self.createpass)
+                            self.create_password_window.config(height='200', padding='10', width='200')
+                            self.create_password_window.pack(side='top')
+
+                            # Main widget
+                            self.mainwindow = self.create_password_window
+
+                        def cancel(self):
+                            pass
+
+                        def createpass(self):
+                            global passwarned
+                            name = self.entry_1.get()
+                            if name == "":
+                                if passwarned == True:
+                                    self.label_warning.destroy()
+                                else:
+                                    self.label_warning = tk.Label(self.create_password_window)
+                                    self.label_warning.config(font='{Courier} 10 {bold}', foreground='#ff4246', text="Can't save a blank name!!")
+                                    self.label_warning.grid(column='1', row='7', sticky='e')
+                                    passwarned = True
+                            else:
+                                username = self.entry_2.get()
+                                password = self.entry_3.get()
+                                f = open("LOCALSAVE/" + name + ".dll", "w")
+                                f.write(en.encryptMsg(username + ":" + password))
+                                f.close()
+                                root.destroy()
+
+                        def run(self):
+                            self.mainwindow.mainloop()
+
+                    if __name__ == '__main__':
+                        import tkinter as tk
+                        root = tk.Tk()
+                        app = NewprojectApp(root)
+                        app.run()
+                    pass
+
+                def showPass(self):
+                    pass
+
+                def deletePass(self):
+                    pass
+
+                def run(self):
+                    self.mainwindow.mainloop()
+                    
+
+            if __name__ == '__main__':
+                import tkinter as tk
+                root = tk.Tk()
+                root.resizable(False,False)
+                app = NewprojectApp(root)
+                app.run()
+
+            
         else:
             print("failed")
             if self.label_warning.winfo_exists():
@@ -84,5 +231,8 @@ if __name__ == '__main__':
     import tkinter as tk
     root = tk.Tk()
     root.resizable(False,False)
+    def qutiMainWindow():
+        root.destroy()
+    
     app = NewprojectApp(root)
     app.run()
