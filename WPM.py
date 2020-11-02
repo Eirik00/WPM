@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+import os
 
 #################This is the encryption tab#####################
 alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," ",".",",",":",";","1","2","3","4","5","6","7","8","9","0"]
@@ -14,14 +15,16 @@ def encryptMsg(msg):
 
 def decryptMsg(msg):
     nwMsg = ""
-    for x in f:
+    for x in msg:
         i = encrypte.index(x)
-        msg = msg + alphabet[i]
+        nwMsg = nwMsg + alphabet[i]
     return nwMsg
 #################################################################
 
 pinCode = ""
 passwarned = False
+passwordsArray = []
+ShowPasshidden = 1
 class NewprojectApp:
     def __init__(self, master=None):
         # build ui
@@ -108,6 +111,10 @@ class NewprojectApp:
                     self.frame_15 = tk.Frame(self.mainframe)
                     self.frame_15.config(background='#c2fcfc', height='40', width='200')
                     self.frame_15.grid(column='0', row='3')
+                    self.button_1 = tk.Button(self.mainframe)
+                    self.button_1.config(font='{Calibri} 10 {bold}', text='Refresh')
+                    self.button_1.grid(column='2', padx='22', row='3', sticky='nw')
+                    self.button_1.configure(command=self.refreshList)
                     self.mainframe.config(background='#c2fcfc', height='200', width='200')
                     self.mainframe.pack(side='top')
 
@@ -182,7 +189,7 @@ class NewprojectApp:
                                 username = self.entry_2.get()
                                 password = self.entry_3.get()
                                 f = open("LOCALSAVE/" + name + ".dll", "w")
-                                f.write(en.encryptMsg(username + ":" + password))
+                                f.write(encryptMsg(username + ":" + password))
                                 f.close()
                                 root.destroy()
 
@@ -192,17 +199,100 @@ class NewprojectApp:
                     if __name__ == '__main__':
                         import tkinter as tk
                         root = tk.Tk()
+                        root.resizable(False,False)
                         app = NewprojectApp(root)
                         app.run()
                     pass
 
                 def showPass(self):
-                    pass
+                    if self.listbox_4.get(self.listbox_4.curselection()):
+                        active = self.listbox_4.get(self.listbox_4.curselection())
+                        class ShowPass:
+                            def __init__(self, master=None):
+                                # build ui
+                                self.frame_1 = tk.Frame(master)
+                                self.label_1 = tk.Label(self.frame_1)
+                                self.label_1.config(text='Username')
+                                self.label_1.grid(sticky='w')
+                                self.entry_1 = tk.Entry(self.frame_1)
+                                self.entry_1.grid(column='0', row='1')
+                                _text_ = active.split(":")[0]
+                                self.entry_1.delete('0', 'end')
+                                self.entry_1.insert('0', _text_)
+                                self.label_2 = tk.Label(self.frame_1)
+                                self.label_2.config(text='Password')
+                                self.label_2.grid(column='0', row='3', sticky='w')
+                                self.entry_2 = tk.Entry(self.frame_1)
+                                self.entry_2.config(show='*')
+                                self.entry_2.grid(column='0', row='4')
+                                passfile = open("LOCALSAVE/" + active.split(":")[1])
+                                passwordeaf = decryptMsg(passfile.read())
+                                _text_ = passwordeaf.split(":")[1]
+                                self.entry_2.delete('0', 'end')
+                                self.entry_2.insert('0', _text_)
+                                self.button_2 = tk.Button(self.frame_1)
+                                self.button_2.config(text='show')
+                                self.button_2.grid(column='0', row='3')
+                                self.button_2.configure(command=self.changeVisibility)
+                                self.frame_2 = tk.Frame(self.frame_1)
+                                self.frame_2.config(height='20', width='200')
+                                self.frame_2.grid(column='0', row='2')
+                                self.frame_1.config(borderwidth='20', height='200', width='200')
+                                self.frame_1.pack(side='top')
+
+                                # Main widget
+                                self.mainwindow = self.frame_1
+
+                            def changeVisibility(self):
+                                global ShowPasshidden
+                                if ShowPasshidden == 1:
+                                    self.entry_2.config(show='')
+                                    self.button_2.config(text="hide")
+                                    ShowPasshidden = 0
+                                else:
+                                    self.entry_2.config(show='*')
+                                    self.button_2.config(text="show")
+                                    ShowPasshidden = 1
+                            
+                            def run(self):
+                                self.mainwindow.mainloop()
+
+                        if __name__ == '__main__':
+                            import tkinter as tk
+                            root = tk.Tk()
+                            root.resizable(False,False)
+                            app = ShowPass(root)
+                            app.run()
 
                 def deletePass(self):
-                    pass
+                    active = self.listbox_4.get(self.listbox_4.curselection())
+                    if active.split(":")[1] == "":
+                        print("file name error")
+                    else:
+                        os.remove("LOCALSAVE/" + active.split(":")[1])
+                        self.listbox_4.delete(self.listbox_4.get(0, tk.END).index(active))
 
+                def refreshList(self):
+                    self.listbox_4.delete(0, tk.END)
+                    for root, dirs, files in os.walk("LOCALSAVE/"):
+                        for file in files:
+                            if file.endswith(".dll"):
+                                fb = open("LOCALSAVE/" + file, "r")
+                                passwordsArray.append("file")
+                                eafe = decryptMsg(fb.read())
+                                self.listbox_4.insert(tk.END, eafe.split(":")[0] + ":" + file)
+                                fb.close()
+                    
                 def run(self):
+                    for root, dirs, files in os.walk("LOCALSAVE/"):
+                        for file in files:
+                            if file.endswith(".dll"):
+                                fb = open("LOCALSAVE/" + file, "r")
+                                passwordsArray.append("file")
+                                eafe = decryptMsg(fb.read())
+                                self.listbox_4.insert(tk.END, eafe.split(":")[0] + ":" + file)
+                                fb.close()
+                    print("test")
                     self.mainwindow.mainloop()
                     
 
