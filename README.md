@@ -8,4 +8,4 @@ Wind's Password Manager is a simple password keeper, you can use this applicatio
   3. Create a pincode and save it in pincode.txt
 
 ### You're now ready to use this application.
-a Tell me if there are any bugs that you come across or if there's anything that could be improved upon
+Tell me if there are any bugs that you come across or if there's anything that could be improved upon
