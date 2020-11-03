@@ -1,6 +1,7 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 import os
+from sys import argv
 
 #################This is the encryption tab#####################
 alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," ",".",",",":",";","1","2","3","4","5","6","7","8","9","0"]
@@ -25,6 +26,13 @@ pinCode = ""
 passwarned = False
 passwordsArray = []
 ShowPasshidden = 1
+
+print(os.path.join(os.path.dirname(os.path.abspath(__file__)), "LOCALSAVE/"))
+abspath = os.path.abspath(argv[0])
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
+print(os.getcwd())
 class NewprojectApp:
     def __init__(self, master=None):
         # build ui
@@ -82,6 +90,7 @@ class NewprojectApp:
         if pinCode == testcode:
             print("correct")
             qutiMainWindow()
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), "LOCALSAVE/")
             
             class NewprojectApp:
                 def __init__(self, master=None):
@@ -172,7 +181,7 @@ class NewprojectApp:
                             self.mainwindow = self.create_password_window
 
                         def cancel(self):
-                            pass
+                            root.destroy()
 
                         def createpass(self):
                             global passwarned
@@ -188,7 +197,7 @@ class NewprojectApp:
                             else:
                                 username = self.entry_2.get()
                                 password = self.entry_3.get()
-                                f = open("LOCALSAVE/" + name + ".dll", "w")
+                                f = open(name + ".dll", "w+")
                                 f.write(encryptMsg(username + ":" + password))
                                 f.close()
                                 root.destroy()
@@ -269,12 +278,12 @@ class NewprojectApp:
                     if active.split(":")[1] == "":
                         print("file name error")
                     else:
-                        os.remove("LOCALSAVE/" + active.split(":")[1])
+                        os.remove(active.split(":")[1])
                         self.listbox_4.delete(self.listbox_4.get(0, tk.END).index(active))
 
                 def refreshList(self):
                     self.listbox_4.delete(0, tk.END)
-                    for root, dirs, files in os.walk("LOCALSAVE/"):
+                    for root, dirs, files in os.walk("../LOCALSAVE/"):
                         for file in files:
                             if file.endswith(".dll"):
                                 fb = open("LOCALSAVE/" + file, "r")
