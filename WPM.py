@@ -72,9 +72,10 @@ class NewprojectApp:
 
 
     def run(self):
-        if not path.isfile("LOCALSAVE/"):
+        if path.isdir("LOCALSAVE/") == False:
             mkdir("LOCALSAVE/")
-        if not path.isfile("pincode.txt"):
+        
+        if path.isfile("pincode.txt") == False:
             f = open("pincode.txt", "x")
             f.write("(REPLACE THIS WITH YOUR PINCODE!)")
             f.close()
