@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
-import os
+from os import walk, remove
 
 #################This is the encryption tab#####################
 alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," ",".",",",":",";","1","2","3","4","5","6","7","8","9","0"]
@@ -269,12 +269,12 @@ class NewprojectApp:
                     if active.split(":")[1] == "":
                         print("file name error")
                     else:
-                        os.remove("LOCALSAVE/" + active.split(":")[1])
+                        remove("LOCALSAVE/" + active.split(":")[1])
                         self.listbox_4.delete(self.listbox_4.get(0, tk.END).index(active))
 
                 def refreshList(self):
                     self.listbox_4.delete(0, tk.END)
-                    for root, dirs, files in os.walk("LOCALSAVE/"):
+                    for root, dirs, files in walk("LOCALSAVE/"):
                         for file in files:
                             if file.endswith(".dll"):
                                 fb = open("LOCALSAVE/" + file, "r")
@@ -284,7 +284,7 @@ class NewprojectApp:
                                 fb.close()
                     
                 def run(self):
-                    for root, dirs, files in os.walk("LOCALSAVE/"):
+                    for root, dirs, files in walk("LOCALSAVE/"):
                         for file in files:
                             if file.endswith(".dll"):
                                 fb = open("LOCALSAVE/" + file, "r")
