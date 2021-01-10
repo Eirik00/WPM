@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.0">
+  <object class="tk.Frame" id="mainframe">
+    <property name="background">#ffffff</property>
+    <property name="height">200</property>
+    <property name="text" translatable="yes">!!
+ONLY DOWNLOAD THIS FROM:
+https://github.com/Eirik00/Wind-s-Password-Manager
+!!
+
+This is a password manager , it's not supposed to harm your computer. If you downloaded this from
+the correct github, then you should be fine. When downloading you understand that any malicous issues or problems is not my responsibility. This is just a python application and full source code can be found on the github!
+
+</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="propagate">True</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="tk.Label" id="label_title">
+        <property name="background">#ffffff</property>
+        <property name="font">{Calibri} 20 {}</property>
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Wind's Password Manager Setup</property>
+        <property name="width">30</property>
+        <layout manager="grid">
+          <property name="columnspan">3</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="sticky">n</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Button" id="cancel">
+        <property name="command">cancel</property>
+        <property name="compound">top</property>
+        <property name="font">{Calibri} 11 {}</property>
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Cancel</property>
+        <property name="width">20</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Button" id="install">
+        <property name="command">install</property>
+        <property name="font">{Calibri} 11 {}</property>
+        <property name="justify">left</property>
+        <property name="relief">sunken</property>
+        <property name="text" translatable="yes">Continue</property>
+        <property name="width">20</property>
+        <layout manager="grid">
+          <property name="column">1</property>
+          <property name="padx">20</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="sticky">ne</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_1">
+        <property name="background">#ffffff</property>
+        <property name="height">40</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Text" id="text_1">
+        <property name="background">#e9e9e9</property>
+        <property name="exportselection">true</property>
+        <property name="foreground">#000000</property>
+        <property name="height">13</property>
+        <property name="state">disabled</property>
+        <property name="tabstyle">wordprocessor</property>
+        <property name="text" translatable="yes">!!
+ONLY DOWNLOAD THIS FROM:
+https://github.com/Eirik00/Wind-s-Password-Manager
+!!
+
+This is a password manager , it's not supposed to 
+harm your computer. If you downloaded this from
+the correct github, then you should be fine. 
+When downloading you understand that any malicous 
+issues or problems that occur after the install,
+is not my responsibility.
+This is just a python application and full source
+code can be found on the github!
+</property>
+        <property name="width">50</property>
+        <property name="wrap">none</property>
+        <property name="yscrollcommand">true</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="columnspan">2</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Frame" id="frame_2">
+        <property name="background">#ffffff</property>
+        <property name="height">40</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>

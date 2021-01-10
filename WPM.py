@@ -75,21 +75,19 @@ class NewprojectApp:
         if path.isdir("LOCALSAVE/") == False:
             mkdir("LOCALSAVE/")
         
-        if path.isfile("pincode.txt") == False:
-            f = open("pincode.txt", "x")
-            f.write("(REPLACE THIS WITH YOUR PINCODE!)")
-            f.close()
+        if path.isfile("pincode.wpk") == False:
+            print("error NO PINCODE FOUND")
             
         self.mainwindow.mainloop()
 
     def pinCodeEntered(self):
         global tk
         pinCode = self.entry_pincode.get()
-        f = open("pincode.txt", "r")
-        testcode = f.read()
+        f = open("pincode.wpk", "r")
+        testcode = decryptMsg(f.read())
         if pinCode == testcode:
             print("correct")
-            qutiMainWindow()
+            quitMainWindow()
             
             class NewprojectApp:
                 def __init__(self, master=None):
@@ -333,7 +331,7 @@ if __name__ == '__main__':
     root = tk.Tk()
     root.resizable(False,False)
     root.title("WPM Log Inn")
-    def qutiMainWindow():
+    def quitMainWindow():
         root.destroy()
     
     app = NewprojectApp(root)
