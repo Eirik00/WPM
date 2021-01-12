@@ -178,7 +178,7 @@ class NewprojectApp:
                             self.mainwindow = self.create_password_window
 
                         def cancel(self):
-                            pass
+                            quiteainWindow()
 
                         def createpass(self):
                             global passwarned
@@ -203,6 +203,8 @@ class NewprojectApp:
                             self.mainwindow.mainloop()
 
                     if __name__ == '__main__':
+                        def quiteainWindow():
+                            root.destroy()
                         import tkinter as tk
                         root = tk.Tk()
                         root.resizable(False,False)
